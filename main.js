@@ -5,7 +5,11 @@ const reset = document.getElementById('reset');
 let timeLag = 0;
 let intervalId = null;
 
-stop.disabled = true;
+
+window.addEventListener('load', () => {
+    stop.disabled = true;
+    reset.disabled = true;
+})
 
 const updateTime = () => {
     const miliSecond = timeLag % 1000;
@@ -44,6 +48,8 @@ stop.addEventListener('click', function (e) {
 
 reset.addEventListener('click', function (e) {
     start.disabled = false;
+    stop.disabled = true;
+    reset.disabled = true;
     timeLag = 0;
     updateTime();
     clearInterval(intervalId);
